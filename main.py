@@ -5,13 +5,13 @@ def read_from_file(file_path):
 def extract_data(data):
     return data.split('\n')
 
-def main():
-    data = read_from_file('doc.txt')
+def handle_values():
+    data = read_from_file('document.txt')
     extracted_data = extract_data(data)
     #print(extracted_data)
     result=[]
     for line in extracted_data:
-        print(line)
+        # print(line)
         first=0
         last=0
         found=False
@@ -33,11 +33,18 @@ def main():
                 #print('this is not a number')
                 continue
         if first!=0:
-            result.append([first,last])
+            result.append([line,first,last])
     #print(result)
-    for i in range(len(result)):
-        print(f"{result[i]}: {result[i][0] + result[i][1]}")
-        print()
+    #for i in range(len(result)):
+    #    print(f"{result[i]}: {str(result[i][1]) + str(result[i][2])}")
+    return result
 
+def main():
+    result = handle_values()
+    etalonnage = 0
+    for i in range(len(result)):
+        concat = (str(result[i][1]) + str(result[i][2]))
+        etalonnage += int(concat)
+    print(etalonnage)
 
 main()
