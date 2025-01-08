@@ -357,42 +357,38 @@
         .split(" ");
     };
 
-    const handle_values = (data) => {
-      //console.log(data)
+    const handleValues = (data) => {
       let resultNumbers = [];
-      //let originalStringList = [];
       for (let i = 0; i < data.length; i++) {
         let temp = data[i].split("");
         let numberList = "";
-        //let stringList = "";
         for (let j = 0; j < temp.length; j++) {
           if (!isNaN(temp[j])) {
             numberList += temp[j];
           }
-          //stringList += temp[j];
         }
-        console.log(numberList);
         if (numberList.length > 0) {
           resultNumbers.push(numberList);
-          //originalStringList.push(stringList);
         }
       }
 
       let finalResult = [];
       for (let i = 0; i < resultNumbers.length; i++) {
         lastIndex = resultNumbers[i].length - 1;
-        contact = resultNumbers[i][0] + resultNumbers[i][lastIndex];
-        finalResult.push(contact);
+        concatValues = resultNumbers[i][0] + resultNumbers[i][lastIndex];
+        finalResult.push(concatValues);
       }
 
-      etalonnage = 0;
+      calibration = 0;
       for (let i = 0; i < finalResult.length; i++) {
-        etalonnage += parseInt(finalResult[i]);
+        calibration += parseInt(finalResult[i]);
       }
-      console.log(etalonnage);
+      if (calibration > 0) {
+        console.log("résultat attendu: ", calibration);
+      }
     };
 
     data = extractData();
-    handle_values(data);
+    handleValues(data);
   </script>
 </html>
